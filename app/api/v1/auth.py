@@ -11,7 +11,7 @@ from email.mime.multipart import MIMEMultipart
 
 router = APIRouter()
 
-oauth2_scheme = OAuth2PasswordRequestForm # Tambahkan OAuth2PasswordRequestForm sebagai parameter
+oauth2_scheme = OAuth2PasswordRequestForm # Tambahkan OAuth2PasswordRequestForm 
 @router.post("/login", response_model=user.Token)
 def login(
     db: Session = Depends(get_db), form_data: OAuth2PasswordRequestForm = Depends()
