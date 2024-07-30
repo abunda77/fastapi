@@ -17,12 +17,21 @@ class Settings(BaseSettings):
         ..., json_schema_extra={"env": "ACCESS_TOKEN_EXPIRE_MINUTES"}
     )
 
+    MAIL_MAILER: str = Field(..., json_schema_extra={"env": "MAIL_MAILER"})
+    MAIL_HOST: str = Field(..., json_schema_extra={"env": "MAIL_HOST"})
+    MAIL_PORT: int = Field(..., json_schema_extra={"env": "MAIL_PORT"})
+    MAIL_USERNAME: str = Field(..., json_schema_extra={"env": "MAIL_USERNAME"})
+    MAIL_PASSWORD: str = Field(..., json_schema_extra={"env": "MAIL_PASSWORD"})
+    MAIL_ENCRYPTION: str = Field(..., json_schema_extra={"env": "MAIL_ENCRYPTION"})
+    MAIL_FROM_ADDRESS: str = Field(..., json_schema_extra={"env": "MAIL_FROM_ADDRESS"})
+
+   
     # Rate Limiting
     RATE_LIMIT_REQUESTS: int = Field(..., json_schema_extra={"env": "RATE_LIMIT_REQUESTS"})
     RATE_LIMIT_PERIOD: str = Field(..., json_schema_extra={"env": "RATE_LIMIT_PERIOD"})
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
-
+   
 
 settings = Settings()  # Membuat instance Settings secara langsung
 PAGE_SIZE = 100

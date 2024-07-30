@@ -1,9 +1,12 @@
+import bcrypt
 from sqlalchemy.orm import Session
 from app.db import models
 from app.schemas import user
 from fastapi import Depends
 #from app.core.security import get_current_user
 from fastapi import HTTPException, status
+from app.core.email import send_welcome_email
+
 
 
 
@@ -26,18 +29,39 @@ def get_users(db: Session, skip: int = 0, limit: int = 100):
 
 def create_user(db: Session, user: user.UserCreate):
     from app.core.security import get_password_hash
-    hashed_password = get_password_hash(user.password)
+    salt = bcrypt.gensalt(rounds=10)  # Laravel default is 10 rounds
+    hashed_password = bcrypt.hashpw(user.password.encode('utf-8'), salt)
+    formatted_hash = f"$2y${10}${hashed_password.decode('utf-8')[7:]}"
     db_user = models.User(
         name=user.name,
         email=user.email,
-        password=hashed_password,
+        password=formatted_hash,
         role=user.role,
         is_active=user.is_active,
     )
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
+    
+    try:
+        send_welcome_email(db_user.email)
+        print(f"Welcome email berhasil dikirim ke {db_user.email}")
+    except Exception as e:
+        print(f"Gagal mengirim Welcome email: {str(e)}")
+
+    # Trigger UserRegistered event
+    # trigger_user_registered_event(db_user)
+    # print("Event UserRegistered telah dipicu.")
+
     return db_user
+
+
+
+def verify_password(plain_password: str, hashed_password: str) -> bool:
+    # Convert Laravel's $2y$ to $2b$ for Python's bcrypt
+    if hashed_password.startswith('$2y$'):
+        hashed_password = '$2b$' + hashed_password[4:]
+    return bcrypt.checkpw(plain_password.encode('utf-8'), hashed_password.encode('utf-8'))
 
 
 def update_user(db: Session, user_id: int, user_update: user.UserUpdate):

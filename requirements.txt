@@ -1,9 +1,9 @@
 fastapi
 uvicorn
 sqlalchemy
-pydantic[email]
-python-jose[cryptography]
-passlib[bcrypt]
+pydantic
+python-jose
+passlib
 python-multipart
 python-dotenv
 mysqlclient
@@ -17,7 +17,6 @@ pytest
 mysql-connector-python
 uuid
 sqlalchemy-utils
-smtplib
-MIMEText
-MIMEMultipart
+bcrypt
+
 
