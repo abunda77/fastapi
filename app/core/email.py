@@ -6,7 +6,7 @@ from email.utils import formataddr
 
 from app.core.config import settings  # Import settings from config.py
 
-def send_welcome_email(email: str, subject="Welcome to BOSQUE PROPERTI!"):
+def send_welcome_email(email: str, subject="Selamat bergabung di BOSQUE PROPERTI!"):
     """
     Sends a welcome email to a new user.
 
