@@ -12,6 +12,8 @@ app = FastAPI(title=settings.PROJECT_NAME, version=settings.PROJECT_VERSION)
 origins = [
     "http://localhost",  # Ganti dengan origin Laravel Anda
     "http://localhost:8001",
+    "http://localhost:3000",
+    "https://next-ori.serverdata.my.id",
 ]
 
 app.add_middleware(
