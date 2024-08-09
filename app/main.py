@@ -13,6 +13,7 @@ origins = [
     "http://localhost",  # Ganti dengan origin Laravel Anda
     "http://localhost:8001",
     "http://localhost:3000",
+    "http://localhost:4321",
     "https://next-ori.serverdata.my.id",
 ]
 

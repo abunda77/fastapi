@@ -96,7 +96,7 @@ def forgot_password(
             detail="User with this email does not exist",
         )
     reset_token = create_reset_token(email=db_user.email)
-    reset_url = f"http://your-domain.com/reset-password?token={reset_token}"
+    reset_url = f"https://bosqu.serverdata.my.id/reset-password?token={reset_token}"
     
     send_reset_email(email=db_user.email, reset_url=reset_url)
     
@@ -122,7 +122,7 @@ def reset_password(
     return {"message": "Password updated successfully"}
 
 def send_reset_email(email: str, reset_url: str):
-    from_address = "your-email@example.com"
+    from_address = "hello@serverdata.my.id"
     to_address = email
     subject = "Password Reset"
     
@@ -134,7 +134,7 @@ def send_reset_email(email: str, reset_url: str):
     body = f"Click the link to reset your password: {reset_url}"
     msg.attach(MIMEText(body, "plain"))
     
-    with smtplib.SMTP("smtp.example.com", 587) as server:
+    with smtplib.SMTP("smtp-relay.brevo.com", 587) as server:
         server.starttls()
-        server.login("your-email@example.com", "your-email-password")
+        server.login("796ebb001@smtp-brevo.com", "8V0na1wg9WfbOL6p")
         server.sendmail(from_address, to_address, msg.as_string())
