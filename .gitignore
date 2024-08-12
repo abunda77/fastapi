@@ -1,4 +1,6 @@
 .env
+.env.server
 fastapi-lib
 .pytest_cache
 __pycache__
+tree.py
