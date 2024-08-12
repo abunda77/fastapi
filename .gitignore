@@ -1,3 +1,4 @@
 .env
 fastapi-lib
 .pytest_cache
+__pycache__
