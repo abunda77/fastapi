@@ -102,6 +102,8 @@ Jika Anda menemukan bug atau memiliki saran untuk meningkatkan API ini, jangan r
 
 Terima kasih telah menggunakan Real Estate API! Kami berharap API ini dapat membantu Anda dalam mengembangkan aplikasi real estate yang hebat. 🎉
 
+Good luck !
+
 <footer>
   <p>© 2024 Real Estate API. All rights reserved.</p>
 </footer>
