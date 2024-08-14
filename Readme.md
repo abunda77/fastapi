@@ -36,7 +36,7 @@ Deskripsi: Mendapatkan daftar semua properti yang tersedia.
 
 Contoh Response:
 
-````
+```
 [
   {
     "id": 1,
@@ -51,7 +51,7 @@ Contoh Response:
 ```
 
 2. Detail Properti
-Endpoint: /properties/{id}
+   Endpoint: /properties/{id}
 
 Method: GET
 
@@ -68,10 +68,10 @@ Contoh Response:
   "ukuran": "200 m²",
   "deskripsi": "Rumah modern dengan taman yang luas."
 }
-
 ```
+
 3. Tambah Properti Baru
-Endpoint: /properties
+   Endpoint: /properties
 
 Method: POST
 
@@ -96,15 +96,12 @@ def get_properties():
         {"id": 2, "nama": "Rumah Modern", "lokasi": "Bandung", "harga": 3500000000}
     ]
 ```
+
 📬 Feedback dan Kontribusi
 Jika Anda menemukan bug atau memiliki saran untuk meningkatkan API ini, jangan ragu untuk mengirimkan masalah atau pull request di repository GitHub kami. Kami sangat menghargai kontribusi dari komunitas! 🌟
 
-
 Terima kasih telah menggunakan Real Estate API! Kami berharap API ini dapat membantu Anda dalam mengembangkan aplikasi real estate yang hebat. 🎉
-
 
 <footer>
   <p>© 2024 Real Estate API. All rights reserved.</p>
 </footer>
-
-````
