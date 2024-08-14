@@ -12,12 +12,14 @@ Sebelum mulai menggunakan API ini, pastikan Anda memiliki:
 
 - **Python 3.7+** terinstal di sistem Anda
 - **FastAPI** dan **Uvicorn** yang dapat diinstal menggunakan pip:
+
   ```bash
   pip install fastapi uvicorn
+  ```
+
   Sebuah database, seperti PostgreSQL atau MySQL, yang terhubung dengan aplikasi.
   🌟 Fitur Utama
   API ini menyediakan beberapa fitur utama yang dapat Anda manfaatkan dalam aplikasi real estate Anda:
-  ```
 
 Manajemen Properti: Menyimpan dan mengelola data properti seperti lokasi, harga, ukuran, dan tipe.
 Manajemen Agen: Menyimpan informasi agen real estate yang mengelola penjualan atau penyewaan properti.
@@ -46,7 +48,7 @@ Contoh Response:
   },
   ...
 ]
-
+```
 
 2. Detail Properti
 Endpoint: /properties/{id}
@@ -67,7 +69,7 @@ Contoh Response:
   "deskripsi": "Rumah modern dengan taman yang luas."
 }
 
-
+```
 3. Tambah Properti Baru
 Endpoint: /properties
 
@@ -93,7 +95,7 @@ def get_properties():
         {"id": 1, "nama": "Apartemen Mewah", "lokasi": "Jakarta", "harga": 2500000000},
         {"id": 2, "nama": "Rumah Modern", "lokasi": "Bandung", "harga": 3500000000}
     ]
-
+```
 📬 Feedback dan Kontribusi
 Jika Anda menemukan bug atau memiliki saran untuk meningkatkan API ini, jangan ragu untuk mengirimkan masalah atau pull request di repository GitHub kami. Kami sangat menghargai kontribusi dari komunitas! 🌟
 
@@ -104,4 +106,5 @@ Terima kasih telah menggunakan Real Estate API! Kami berharap API ini dapat memb
 <footer>
   <p>© 2024 Real Estate API. All rights reserved.</p>
 </footer>
+
 ````
