@@ -15,6 +15,7 @@ origins = [
     "http://localhost:3000",
     "http://localhost:4321",
     "https://next-ori.serverdata.my.id"
+    "https://home.serverdata.my.id"
 ]
 
 app.add_middleware(
