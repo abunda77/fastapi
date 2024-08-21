@@ -14,8 +14,9 @@ origins = [
     "http://localhost:8001",
     "http://localhost:3000",
     "http://localhost:4321",
-    "https://next-ori.serverdata.my.id"
-    "https://home.serverdata.my.id"
+    "https://next-ori.serverdata.my.id",
+    "https://home.serverdata.my.id",
+    "https://bosqu.serverdata.my.id",
 ]
 
 app.add_middleware(
