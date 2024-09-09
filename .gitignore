@@ -5,3 +5,9 @@ fastapi-lib
 __pycache__/
 /__pycache__/
 tree.py
+app/__pycache__/
+app/api/v1/__pycache__/
+app/core/__pycache__/
+app/crud/__pycache__/
+app/db/__pycache__/
+app/schemas/__pycache__/
