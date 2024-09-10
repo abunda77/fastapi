@@ -37,8 +37,68 @@ app.include_router(profile.router, prefix="/api/v1/profile", tags=["Profile"])
 app.include_router(category.router, prefix="/api/v1/category", tags=["Category"])    # Tambahkan ini 
 app.include_router(properties.router, prefix="/api/v1/properties", tags=["Properties"])
  
+from fastapi.testclient import TestClient
+from app.main import app
+
+client = TestClient(app)
+
 
 @app.get("/")  # Menambahkan route baru
-def read_root():
-    return {"Hello": "World"}
+def test_main():
+    try:
+        return {
+            "status_code": 200,
+            "status_message": "Connection successful",
+            "data": {
+                "user": {
+                    "name": "John Doe",
+                    "email": "johndoe@example.com",
+                    "phone": "+123456789",
+                    "address": {
+                        "street": "123 Main St",
+                        "city": "Metropolis",
+                        "state": "NY",
+                        "zip": "10001"
+                    },
+                    "created_at": "2024-08-09T12:34:56Z",
+                    "updated_at": "2024-08-09T14:56:23Z"
+                }
+            }
+        }
+    except Exception as e:
+        return {
+            "status_code": 500,
+            "status_message": "Terjadi kesalahan internal",
+            "error": str(e)
+        }
+
+# # Fungsi tes terpisah
+# def test_root_endpoint():
+#     try:
+#         response = client.get("/")
+#         assert response.status_code == 200
+#         assert response.json() == {
+#             "status_code": 200,
+#             "status_message": "Connection successful",
+#             "data": {
+#                 "user": {
+#                     "name": "John Doe",
+#                     "email": "johndoe@example.com",
+#                     "phone": "+123456789",
+#                     "address": {
+#                         "street": "123 Main St",
+#                         "city": "Metropolis",
+#                         "state": "NY",
+#                         "zip": "10001"
+#                     },
+#                     "created_at": "2024-08-09T12:34:56Z",
+#                     "updated_at": "2024-08-09T14:56:23Z"
+#                 }
+#             }
+#         }
+#     except AssertionError as ae:
+#         print(f"Pengujian gagal: {str(ae)}")
+#     except Exception as e:
+#         print(f"Terjadi kesalahan saat pengujian: {str(e)}")
+
 # ...include router lainnya
