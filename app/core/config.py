@@ -31,6 +31,7 @@ class Settings(BaseSettings):
     RATE_LIMIT_PERIOD: str = Field(..., json_schema_extra={"env": "RATE_LIMIT_PERIOD"})
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
+    HOME_FRONTEND_URL: str = Field(..., json_schema_extra={"env": "HOME_FRONTEND_URL"})
    
 
 settings = Settings()  # Membuat instance Settings secara langsung

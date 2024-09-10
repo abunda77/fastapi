@@ -97,7 +97,7 @@ def forgot_password(
             detail="User with this email does not exist",
         )
     reset_token = create_reset_token(email=db_user.email)
-    reset_url = f"https://home.serverdata.my.id/reset-password?token={reset_token}"
+    reset_url = f"{settings.HOME_FRONTEND_URL}/reset-password?token={reset_token}"
     
     send_reset_email(email=db_user.email, reset_url=reset_url)
     
