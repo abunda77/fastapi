@@ -37,6 +37,7 @@ class ProfileBase(BaseModel):
     gender: GenderEnum
     birthday: Optional[datetime]
     avatar: Optional[str]
+    remote_url: Optional[str]
     company_name: Optional[str] = None  # Menambahkan field company_name
     biodata_company: Optional[str] = None  # Menambahkan field biodata_company
     jobdesk: Optional[str] = None  # Menambahkan jobdesk
@@ -75,5 +76,6 @@ class ProfileInfo(BaseModel):
     whatsapp: Optional[str]
     company_name: Optional[str]
     avatar: Optional[str]
+    remote_url: Optional[str]
     biodata_company: Optional[str]
     jobdesk: Optional[str]

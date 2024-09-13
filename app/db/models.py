@@ -41,7 +41,8 @@ class Profile(Base):
     village_id = Column(String, ForeignKey("regions.code"))
     gender = Column(Enum("man", "woman", name="gender"))
     birthday = Column(DateTime)
-    avatar = Column(String)  # URL avatar
+    avatar = Column(String)  
+    remote_url = Column(String) # URL avatar
     social_media = Column(JSON) # Menambahkan kolom social_media dengan tipe data JSON
     company_name = Column(String(255))  # Menambahkan kolom company_name
     biodata_company = Column(Text) 

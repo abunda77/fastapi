@@ -109,6 +109,7 @@ def create_profile(db: Session, profile: profile.ProfileCreate, current_user: us
         gender=profile.gender,
         birthday=profile.birthday,
         avatar=profile.avatar,
+        remote_url=profile.remote_url,
         company_name=profile.company_name,  # Menambahkan company_name
         biodata_company=profile.biodata_company,  # Menambahkan biodata_company
         jobdesk=profile.jobdesk,  # Menambahkan jobdesk 
