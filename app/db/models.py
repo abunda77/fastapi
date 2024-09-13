@@ -163,6 +163,7 @@ class PropertyImage(Base):
     #property_id = Column(Integer, ForeignKey("properties.image_id"))  # Kembalikan ke property_id
     property_id = Column(Integer, ForeignKey("properties.id"))
     image_url = Column(String)
+    image_remote_url = Column(String)
     is_primary = Column(Boolean)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
