@@ -6,7 +6,7 @@ class SpecificationBase(BaseModel):
     land_size: int
     building_size: int
     bedroom: int
-    carport: Optional[int] = None
+    carpot: Optional[int] = None
     bathroom: Optional[int] = None
     dining_room: Optional[int] = None
     living_room: Optional[int] = None

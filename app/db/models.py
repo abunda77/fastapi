@@ -147,7 +147,7 @@ class Specification(Base):
     land_size = Column(Integer)
     building_size = Column(Integer)
     bedroom = Column(Integer)
-    carport = Column(Integer)
+    carpot = Column(Integer)
     bathroom = Column(Integer)
     dining_room = Column(Integer)
     living_room = Column(Integer)
