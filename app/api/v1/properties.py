@@ -36,6 +36,24 @@ def read_property(property_id: int, db: Session = Depends(get_db)):
     return db_property
 
 
+@router.get("/user/{user_id}", response_model=Page[property.Property])
+def read_user_properties(
+    user_id: int,
+    params: Params = Depends(),
+    db: Session = Depends(get_db),
+    current_user: user.User = Depends(get_current_user)
+):
+    """
+    Mengambil daftar properti milik pengguna tertentu.
+    Hanya pengguna yang sedang login atau admin/superadmin yang dapat mengakses.
+    """
+    if current_user.id != user_id and current_user.role not in ["admin", "superadmin"]:
+        raise HTTPException(status_code=403, detail="Not authorized to view these properties")
+    
+    query = db.query(models.Property).filter(models.Property.user_id == user_id).options(selectinload(models.Property.images))
+    return paginate(query, params)
+
+
 @router.post("/", response_model=property.Property)
 def create_property(
     property_create: property.PropertyCreate, 
@@ -259,6 +277,5 @@ def delete_specification(
     return crud_spesification.delete_specification(db=db, specification_id=specification_id, current_user=current_user)
 
 # app/api/v1/properties.py
-
 
 
