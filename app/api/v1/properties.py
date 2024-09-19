@@ -21,11 +21,19 @@ from app.crud import crud_spesification
 from app.api.v1.users import get_superadmin_or_admin_user
 router = APIRouter()
 
-
 @router.get("/", response_model=Page[property.Property])
 def read_properties(params: Params = Depends(), db: Session = Depends(get_db)):
-    query = db.query(models.Property).options(selectinload(models.Property.images))
-    return paginate(query, params)  # Return hasil paginate langsung
+    query = db.query(models.Property).options(
+        selectinload(models.Property.images.and_(models.PropertyImage.image_url != None))
+    ).order_by(models.Property.created_at.desc())
+    
+    properties = paginate(query, params)
+    
+    # Filter gambar yang memiliki image_url
+    for prop in properties.items:
+        prop.images = [img for img in prop.images if img.image_url is not None]
+    
+    return properties
 
 
 @router.get("/{property_id}", response_model=property.Property)
