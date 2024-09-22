@@ -6,7 +6,7 @@ from typing import List  # Tambahkan import ini
 
 class PropertyImageBase(BaseModel):
     
-    image_url: str
+    image_url: Optional[str] = None
     image_remote_url: Optional[str] = None
     is_primary: Optional[bool] = False
 

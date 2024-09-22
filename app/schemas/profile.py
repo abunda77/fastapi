@@ -9,17 +9,17 @@ class GenderEnum(str, Enum):
     man = "man"
     woman = "woman"
 
-class SocialMedia(BaseModel):
-    facebook: Optional[str] = None
-    twitter: Optional[str] = None
-    instagram: Optional[str] = None
-    linkedin: Optional[str] = None
-    youtube: Optional[str] = None
-    tiktok: Optional[str] = None
-    snapchat: Optional[str] = None
-    pinterest: Optional[str] = None
-    reddit: Optional[str] = None
-    zoom: Optional[str] = None
+# class SocialMedia(BaseModel):
+#     facebook: Optional[str] = None
+#     twitter: Optional[str] = None
+#     instagram: Optional[str] = None
+#     linkedin: Optional[str] = None
+#     youtube: Optional[str] = None
+#     tiktok: Optional[str] = None
+#     snapchat: Optional[str] = None
+#     pinterest: Optional[str] = None
+#     reddit: Optional[str] = None
+#     zoom: Optional[str] = None
 
 class ProfileBase(BaseModel):
     user_id: int # tambahkan user_id di sini
@@ -42,7 +42,7 @@ class ProfileBase(BaseModel):
     biodata_company: Optional[str] = None  # Menambahkan field biodata_company
     jobdesk: Optional[str] = None  # Menambahkan jobdesk
     model_config = SettingsConfigDict(from_attributes=True)
-    social_media: Optional[SocialMedia] = None  # Menambahkan field social_media
+    # social_media: Optional[SocialMedia] = None
 
 class ProfileCreate(ProfileBase):
       user_id: int # tambahkan user_id di sini
