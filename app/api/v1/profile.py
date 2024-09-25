@@ -49,6 +49,8 @@ def read_profile(profile_id: int, db: Session = Depends(get_db), current_user: u
         return db_profile
     else:
         raise HTTPException(status_code=403, detail="Not enough permissions")
+    
+
 
 
 

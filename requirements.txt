@@ -10,7 +10,7 @@ mysqlclient
 pydantic-settings==2.3.4
 fastapi-pagination==0.12.26
 fastapi-cache
-slowapi
+slowapi==0.1.9
 os
 base64
 pytest
