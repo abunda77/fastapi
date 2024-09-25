@@ -14,7 +14,6 @@ from app.schemas import user
 from core.security import get_current_user
 from typing import List, Optional
 from app.schemas import property_image 
-#from app.schemas.property_image import PropertyImageCreate
 from app.crud import crud_property_image 
 from app.crud import crud_facility
 from app.crud import crud_spesification 
@@ -285,5 +284,3 @@ def delete_specification(
     return crud_spesification.delete_specification(db=db, specification_id=specification_id, current_user=current_user)
 
 # app/api/v1/properties.py
-
-
