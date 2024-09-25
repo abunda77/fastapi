@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.api.v1 import auth, category, profile, users, properties  # ...import router lainnya
+from app.api.v1 import auth, category, profile, users, properties,regions  # ...import router lainnya
 from app.core.config import settings
 from fastapi.security import HTTPBearer
 from fastapi_pagination import add_pagination
@@ -36,6 +36,7 @@ app.include_router(users.router, prefix="/api/v1/users", tags=["Users"])
 app.include_router(profile.router, prefix="/api/v1/profile", tags=["Profile"])
 app.include_router(category.router, prefix="/api/v1/category", tags=["Category"])    # Tambahkan ini 
 app.include_router(properties.router, prefix="/api/v1/properties", tags=["Properties"])
+app.include_router(regions.router, prefix="/api/v1/regions", tags=["Regions"])
  
 from fastapi.testclient import TestClient
 from app.main import app
