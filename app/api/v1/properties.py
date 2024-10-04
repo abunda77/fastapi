@@ -226,6 +226,26 @@ def create_facility(
         raise HTTPException(status_code=403, detail="Not authorized to add facility to this property")
     return crud_facility.create_facility(db=db, facility=facility, current_user=current_user, property_id=property_id)
 
+@router.put("/{property_id}/facilities/{facility_id}", response_model=facility.Facility)
+def update_facility(
+    property_id: int,
+    facility_id: int,
+    facility_update: facility.FacilityUpdate,
+    db: Session = Depends(get_db),
+    current_user: models.User = Depends(get_current_user),
+):
+    """
+    Memperbarui fasilitas properti yang ada.
+    """
+    db_property = crud_property.get_property(db, property_id=property_id)
+    if db_property is None:
+        raise HTTPException(status_code=404, detail="Property not found")
+    if current_user.id != db_property.user_id and current_user.role not in ["admin", "superadmin"]:
+        raise HTTPException(status_code=403, detail="Not authorized to update facility of this property")
+    return crud_facility.update_facility(db=db, facility_id=facility_id, facility_update=facility_update, current_user=current_user)
+
+
+
 @router.post("/{property_id}/specifications/", response_model=specification.Specification)
 def create_specification(
     property_id: int,
@@ -242,6 +262,24 @@ def create_specification(
     if current_user.id != db_property.user_id and current_user.role not in ["admin", "superadmin"]:
         raise HTTPException(status_code=403, detail="Not authorized to add specification to this property")
     return crud_spesification.create_specification(db=db, specification=specification, current_user=current_user, property_id=property_id)
+
+@router.put("/{property_id}/specifications/{specification_id}", response_model=specification.Specification)
+def update_specification(
+    property_id: int,
+    specification_id: int,
+    specification_update: specification.SpecificationUpdate,
+    db: Session = Depends(get_db),
+    current_user: models.User = Depends(get_current_user),
+):
+    """
+    Memperbarui spesifikasi properti yang ada.
+    """
+    db_property = crud_property.get_property(db, property_id=property_id)
+    if db_property is None:
+        raise HTTPException(status_code=404, detail="Property not found")
+    if current_user.id != db_property.user_id and current_user.role not in ["admin", "superadmin"]:
+        raise HTTPException(status_code=403, detail="Not authorized to update specification of this property")
+    return crud_spesification.update_specification(db=db, specification_id=specification_id, specification_update=specification_update, current_user=current_user)
 
 @router.delete("/{property_id}/facilities/{facility_id}", response_model=facility.Facility)
 def delete_facility(
