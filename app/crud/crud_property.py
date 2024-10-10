@@ -40,6 +40,7 @@ def get_maps(db: Session):
         if prop.address and prop.coordinates:
             maps_data.append({
                 "id": prop.id,
+                "title": prop.title,
                 "address": prop.address,
                 "coordinates": prop.coordinates
             })
