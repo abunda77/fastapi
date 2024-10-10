@@ -30,15 +30,21 @@ def get_property(db: Session, property_id: int):
         raise HTTPException(status_code=404, detail="Property not found")
 
 
-def get_properties(db: Session, skip: int = 0, limit: int = 100):
-    return (
-        db.query(models.Property)
-        .options(selectinload(models.Property.images)),  # Eager load images
-                selectinload(models.Property.user_id).joinedload(models.Profile.user_id)  # Eager load profile
-        .offset(skip)
-        .limit(limit)
-        .all()
-    )
+def get_maps(db: Session):
+    properties = db.query(models.Property).all()
+    if not properties:
+        raise HTTPException(status_code=404, detail="Tidak ada properti yang ditemukan")
+    
+    maps_data = []
+    for prop in properties:
+        if prop.address and prop.coordinates:
+            maps_data.append({
+                "id": prop.id,
+                "address": prop.address,
+                "coordinates": prop.coordinates
+            })
+    
+    return maps_data
 
 
 def create_property(

@@ -34,6 +34,13 @@ def read_properties(params: Params = Depends(), db: Session = Depends(get_db)):
     
     return properties
 
+@router.get("/maps", response_model=List[dict])
+def get_all_maps(db: Session = Depends(get_db)):
+    """
+    Mendapatkan semua data alamat dan koordinat properti.
+    """
+    return crud_property.get_maps(db)
+
 
 @router.get("/{property_id}", response_model=property.Property)
 def read_property(property_id: int, db: Session = Depends(get_db)):
